@@ -1,5 +1,6 @@
 use serde::Serialize;
 
+use super::Vehicle;
 #[derive(Debug, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PointTO {
@@ -30,4 +31,49 @@ pub struct PointTO {
 	pub z8: i32,
 	pub weight_class: i32,
 	pub order_class: i32,
+}
+
+impl PointTO {
+	#[allow(clippy::too_many_arguments)]
+	pub fn new(
+		id: i32,
+		x: i32,
+		y: i32,
+		z: i32,
+		length: i32,
+		width: i32,
+		height: i32,
+		weight_class: i32,
+		order_class: i32,
+	) -> Self {
+		Self {
+			id,
+			x1: x,
+			x2: x,
+			x3: x,
+			x4: x,
+			x5: x + length,
+			x6: x + length,
+			x7: x + length,
+			x8: x + length,
+			y1: y,
+			y2: y,
+			y3: y,
+			y4: y,
+			y5: y + width,
+			y6: y + width,
+			y7: y + width,
+			y8: y + width,
+			z1: z,
+			z2: z,
+			z3: z,
+			z4: z,
+			z5: z + height,
+			z6: z + height,
+			z7: z + height,
+			z8: z + height,
+			weight_class,
+			order_class,
+		}
+	}
 }

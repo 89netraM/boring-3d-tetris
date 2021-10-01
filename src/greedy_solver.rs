@@ -137,35 +137,7 @@ impl<'a> GreedySolver<'a> {
 	}
 
 	fn add_package(&mut self, p: &DimPackage) {
-		self.solution.push(PointTO {
-			id: p.id,
-			x1: self.xp,
-			x2: self.xp,
-			x3: self.xp,
-			x4: self.xp,
-			x5: self.xp + p.length,
-			x6: self.xp + p.length,
-			x7: self.xp + p.length,
-			x8: self.xp + p.length,
-			y1: self.yp,
-			y2: self.yp,
-			y3: self.yp,
-			y4: self.yp,
-			y5: self.yp + p.width,
-			y6: self.yp + p.width,
-			y7: self.yp + p.width,
-			y8: self.yp + p.width,
-			z1: self.zp,
-			z2: self.zp,
-			z3: self.zp,
-			z4: self.zp,
-			z5: self.zp + p.height,
-			z6: self.zp + p.height,
-			z7: self.zp + p.height,
-			z8: self.zp + p.height,
-			order_class: p.order_class,
-			weight_class: p.weight_class,
-		});
+		self.solution.push(p.place(self.xp, self.yp, self.zp));
 		self.placed_packages.push(p.id);
 	}
 }
